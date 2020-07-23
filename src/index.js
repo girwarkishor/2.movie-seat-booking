@@ -11,10 +11,29 @@ let ticketPrice = +movieSelect.value;
 
 // console.log(typeof ticketPrice); //String
 
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+  localStorage.setItem("selectedMovieIndex", movieIndex);
+  localStorage.setItem("selectedMoviePrice", moviePrice);
+}
+
 // Update total and count
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected"); // Tjos will select all in Node List
   //   console.log(selectedSeats); // shows NodeList
+
+  // Copy selected seats into array
+  // Map through array
+  // return a new array indexes
+  //   const seatsIndex = [...selectedSeats].map(function (seat) {
+  //     return [...seats].indexOf(seat);
+  //   });
+  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+
+  localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
+
+  console.log(seatsIndex);
+
   const selectedSeatsCount = selectedSeats.length;
   //   console.log(selectedSeatsCount); // Shows NodeList length
 
@@ -25,6 +44,7 @@ function updateSelectedCount() {
 // Movie select event
 movieSelect.addEventListener("change", (e) => {
   ticketPrice = +e.target.value;
+  setMovieData(e.target.selectedIndex, e.target.value);
   updateSelectedCount();
 });
 
