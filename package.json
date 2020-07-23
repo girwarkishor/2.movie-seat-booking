@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel src/index.html --out-dir development -p 3000",
+    "build": "parcel build src/index.html --out-dir dist --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/girwarkishor/2.movie-seat-booking/issues"
   },
-  "homepage": "https://github.com/girwarkishor/2.movie-seat-booking#readme"
+  "homepage": "https://github.com/girwarkishor/2.movie-seat-booking#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/runtime-corejs3": "^7.10.5",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10"
+  }
 }
