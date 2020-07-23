@@ -1,0 +1,19 @@
+{
+  "name": "movie-seat-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/girwarkishor/2.movie-seat-booking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/girwarkishor/2.movie-seat-booking/issues"
+  },
+  "homepage": "https://github.com/girwarkishor/2.movie-seat-booking#readme"
+}
