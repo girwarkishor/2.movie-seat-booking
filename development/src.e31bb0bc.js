@@ -210,7 +210,8 @@ var container = document.querySelector(".container");
 var seats = document.querySelectorAll(".row .seat:not(.occupied)");
 var count = document.getElementById("count");
 var total = document.getElementById("total");
-var movieSelect = document.getElementById("movie"); // convert string to integer
+var movieSelect = document.getElementById("movie");
+populateUI(); // convert string to integer
 
 var ticketPrice = +movieSelect.value; // console.log(typeof ticketPrice); //String
 // Save selected movie index and price
@@ -241,6 +242,26 @@ function updateSelectedCount() {
 
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
+} // Get data from localStorage and populate UI
+
+
+function populateUI() {
+  var selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach(function (seat, index) {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add("selected");
+      }
+    });
+  } //   console.log(selectedSeats);
+
+
+  var selectedMovieIndex = localStorage.getItem("selectedMovieIndex");
+
+  if (selectedMovieIndex !== null) {
+    movieSelect.selectedIndex = selectedMovieIndex;
+  }
 } // Movie select event
 
 
@@ -257,7 +278,9 @@ container.addEventListener("click", function (e) {
     e.target.classList.toggle("selected");
     updateSelectedCount();
   }
-});
+}); // Initial count and total set
+
+updateSelectedCount();
 },{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
