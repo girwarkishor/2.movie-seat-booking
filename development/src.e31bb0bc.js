@@ -193,6 +193,40 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./sass/main.scss");
+
+var container = document.querySelector(".container");
+var seats = document.querySelectorAll(".row .seat:not(.occupied)");
+var count = document.getElementById("count");
+var total = document.getElementById("total");
+var movieSelect = document.getElementById("movie"); // convert string to integer
+
+var ticketPrice = +movieSelect.value; // console.log(typeof ticketPrice); //String
+// Update total and count
+
+function updateSelectedCount() {
+  var selectedSeats = document.querySelectorAll(".row .seat.selected"); // Tjos will select all in Node List
+  //   console.log(selectedSeats); // shows NodeList
+
+  var selectedSeatsCount = selectedSeats.length; //   console.log(selectedSeatsCount); // Shows NodeList length
+
+  count.innerText = selectedSeatsCount;
+  total.innerText = selectedSeatsCount * ticketPrice;
+} // Movie select event
+
+
+movieSelect.addEventListener("change", function (e) {
+  ticketPrice = +e.target.value;
+  updateSelectedCount();
+}); // Seat click event
+
+container.addEventListener("click", function (e) {
+  //   console.log(e.target); // Show exact target list
+  if (e.target.classList.contains("seat") && !e.target.classList.contains("occupied")) {
+    // console.log(e.target);
+    e.target.classList.toggle("selected");
+    updateSelectedCount();
+  }
+});
 },{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
